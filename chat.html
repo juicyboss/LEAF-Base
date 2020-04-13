@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>chat inbox</title>
+ <script>
+  function addItem() {
+   var newItem = document.createElement("div");
+   newItem.innerHTML = document.getElementById("box").value;
+   newItem.onclick = removeItem;
+   document.getElementById("list").appendChild(newItem);
+   saveList();
+  }
+function removeItem() {
+   document.getElementById("list").removeChild(this);
+   saveList();
+   }
+  function saveList() {
+   localStorage.storedList = document.getElementById("list").innerHTML;
+  }
+  function loadList() {
+   document.getElementById("list").innerHTML = localStorage.storedList;
+   for(var i = 0; i < list.children.length; i++) {
+    list.children[i].onclick = removeItem;
+   }
+  }
+ </script>
+ <style>
+  .header {
+    height:75px; 
+    width: 350px; 
+    background-color:aqua; 
+    float: center; 
+    padding:10px; 
+    margin:20px;
+    text-align:centre; 
+    font-size:24px;
+    text-align: center;
+  }
+  .app {
+    height:600px;
+    width: 350px; 
+    background-color:lightgreen; 
+    float: center; 
+    padding:10px; 
+    margin:20px;
+    text-align: center;
+  }
+  input[type="button"] {
+   background-color: #10FF7F;
+   text-align: center;
+  }
+ </style>
+</head>
+<body>
+ <div class="header">
+  <img src="" style="float: left;"> 
+  <p>chat inbox</p>
+ </div>
+ <div class="app">
+  <p style="font-size:18px; font-style:bold;">please write the first letter of your name then colon and text</p>
+  <input type="text" id="box" value="N:Text"/>
+  <br/>
+  <input type="button" value="Send" onclick="addItem();"/>
+  <br/>
+   <div id="list"></div>
+ </div>
+ <script>
+  if(localStorage.storedList) {
+   loadList();
+  }
+ </script>
+<a href="home page.html">Home</a>/ <a href="chat.html">Chat</a> / <a href="fun.html">Fun Times Blog</a> / <a href="game.html">Game</a> / <a href="info.html">Info</a>
+</body>
+</html>
